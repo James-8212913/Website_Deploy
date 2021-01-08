@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--  <script type="module" src="/static/js/dogs.js"></script> -->
+  </head>
+  <body>
+    <header>
+      <h1> Carina Group Analytics </h1>
+      <nav>
+        <a href="/" class="logo" aria-hidden="true"></a>
+        <a href="/" {% if page.path == "index" %}active{% endif %}>Home</a>
+        <a href="{{ url_for('page', path='team') }}" {% if page.path == "team" %}active{% endif %}>Team</a>
+        <a href="{{ url_for('page', path='Article_1') }}" {% if page.path == "Article_1" %}active{% endif %}>Contact</a>
+      </nav>
+    </header>
+    <content>
+      <h2>Articles</h2>
+      <section>
+        <div class="article">
+          <a href ="{{ url_for('page', path='Article_1') }}" {% if page.path == "Article_1" %}active{% endif %}>Article 1</a>
+        </div>
+        <div><a href = "article_2.html" target="_blank">Article 2</a></div>
+        <div>
+          <a href ="{{ url_for('page', path='ch1') }}" {% if page.path == "Ch1" %}activate{% endif %}>Ch1 Advanced R</a>
+        </div>
+        <div><a href = "article_4.html" target="_blank">Article 4</a></div>
+      </section>
+    </content>
+    <article>
+      {% block content %}
+          <h2>{{ page.meta.description }}</h2>
+          {{ page.html|safe }}
+      {% endblock content %}
+    </article>
+    <aside>
+      <h4>References and Guides</h4>
+        <ul>
+          <p><a href="https://r4ds.had.co.nz" target="_blank"> R for Data Science</a></p>
+          <p><a href="https://css-tricks.com" target="_blank"> CSS Tricks</a></p>
+          <p><a href="https://css-tricks.com" target="_blank"> CSS Tricks</a></p>
+          <p><a href="https://developer.mozilla.org/en-US/" target="_blank"> Mozilla</a></p>
+        </ul>
+    </aside>
+    <footer>
+      <p> Copyright 2021 </p>
+    </footer>
+  </body>
+</html>

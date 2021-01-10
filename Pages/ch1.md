@@ -1,6 +1,5 @@
-
-Title: R Basics
-Description: Chapter 1 from "Advanced R"
+title: R Basics
+description: Chapter 1 from "Advanced R"
 
 ## Chapter 1
 

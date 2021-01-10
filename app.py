@@ -1,5 +1,7 @@
 from flask import Flask, render_template
 from flask_flatpages import FlatPages
+from flask_bootstrap import Bootstrap
+
 
 # https://dev.to/deadwisdom/embracing-jamstack-with-python-generating-a-static-website-with-flask-and-deploying-to-netlify-4bge
 # This has been adopted from the tutorial above
@@ -10,6 +12,8 @@ FLATPAGES_EXTENSION = '.md'
 
 # create the opject, use this for our setting as well
 app = Flask(__name__)
+
+bootstrap = Bootstrap(app)
 
 # For settings the file itself is used
 
@@ -29,4 +33,4 @@ def page(path=None):
     # Look for the flatpages or find "index" if we have one loaded
     page = pages.get_or_404(path or 'index')
      # Render the template "page.html" with our page and title
-    return render_template("page.html", page=page, title=page.meta.get('title', ''))
+    return render_template("base.html", page=page, title=page.meta.get('title', ''))

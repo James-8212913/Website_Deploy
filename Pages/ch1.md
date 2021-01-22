@@ -1,33 +1,35 @@
 title: R Basics
 description: Chapter 1 from "Advanced R"
+published: 2021-01-11
+authour: James M
 
 ## Chapter 1
 
 ## Questions
 
 1. What are the properties of a vector other than its contents?
-  - Three common properties
-    - type `typeof()`   
-    - length `length()`
-    - attributes `attributes()`
+    - Three common properties
+      - type `typeof()`   
+      - length `length()`
+      - attributes `attributes()`
 
 2. What are the four common types of atomic vectors? What are the two rare types?
-  - logical `is.logical()` and `as.logical()` [logical R Documentation](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/logical)
-  - double `is.double()` and `as.double` [double R documentation](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/double)
-  - character `is.character()` and `as.character()` [character R documentation](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/character)
-  - integer `is.integer()` and `as.integer()` [integer R documentation](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/integer)
-  - complex, raw
+    - logical `is.logical()` and `as.logical()` [logical R Documentation](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/logical)
+    - double `is.double()` and `as.double` [double R documentation](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/double)
+    - character `is.character()` and `as.character()` [character R documentation](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/character)
+    - integer `is.integer()` and `as.integer()` [integer R documentation](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/integer)
+    - complex, raw
 
 3. What are attributes and how to you get and set them?
-  - Attributes allow extra metadata to be associated with an object using `attr(x, "y"` and `attr(x, "y") <- value` or get and set all attributes at once with `attributes()`.
-  - [attributes R documentation](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/attributes)
+    - Attributes allow extra metadata to be associated with an object using `attr(x, "y"` and `attr(x, "y") <- value` or get and set all attributes at once with `attributes()`.
+    - [attributes R documentation](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/attributes)
 
 4. How is a list different from an atomic vector? How is a matrix different from a Data Frame?
-  - Elements of a list can be of any type, even a list whereas an atomic vector all the elements must be of the same type.
-  - The elements of a matrix can be different types whereas a data frame must have the same types in each of the columns.
+    - Elements of a list can be of any type, even a list whereas an atomic vector all the elements must be of the same type.
+    - The elements of a matrix can be different types whereas a data frame must have the same types in each of the columns.
 
 5. Can you have a list that is a matrix? Can a Data Frame have a column that is a matrix?
-  - You can make a "list-array" by assuming a dimensionless list. It is possible to make a matrix a column of a data frame `data.frame(x = I(matrix()))`.
+    - You can make a "list-array" by assuming a dimensionless list. It is possible to make a matrix a column of a data frame `data.frame(x = I(matrix()))`.
 
 
 ------
@@ -50,6 +52,8 @@ The basic Data structure in R is a vector - they come in **Atomic Vectors** and 
 - integer (numbers without decimals)
 - double (numbers with decimals)
 - character (strings/ words)
+
+
 ```{r}
 dbl_var <- c(1,1.5,2.5)
 
@@ -82,11 +86,16 @@ is.numeric(dbl_var)
 ```
 ##### Coercion
 
-All elements of a vector must be of the same type. If they aren't then they will be coerced into the most flexible type.
+All elements of a vector must be of the same type.
+
+If they aren't then they will be coerced into the most flexible type.
+
 ```{r}
 str(c(1,"a")) ## integers and strings combine to form 'character' vectors
 ```
+
  When a logical vector is coerced to integer or double, `TRUE = 1` and `FALSE = 0`. Often used in conjunction with `sum()` and `mean()`.
+
 ```{r}
 x <- c(TRUE, FALSE, TRUE, FALSE, FALSE, TRUE)
 typeof(x)
@@ -94,7 +103,9 @@ sum(x) ## total number of 'TRUE's
 as.numeric(x)
 mean(x) ## Proportion that are 'TRUE'
 ```
- If there is any chance of confusion specifically coerce a vector to another type with
+
+ If there is any chance of confusion specifically coerce a vector to another type with:
+
  - `as.logical`
  - `as.integer`
  - `as.character`
@@ -135,6 +146,7 @@ str(b)
 ```
 
 Notes:
+
 - `typeof()` a list is list
 - testing for a list is `is.list()`
 - coerce to a list with `as.list()`
@@ -173,12 +185,14 @@ structure(b) ## returns the structure for the object
 ```
 
 By default, most attributes are lost when modifying a vector. The only attributes lost are the three most important:
+
 1. Names
 2. Dimensions
 3. Class
 
 #### Names
 You can name a vector in three ways:
+
 - When creating it
 - By modifying an existing vector in place
 - By creating a modified copy of an existing vector
@@ -189,7 +203,8 @@ You can unname a vector by `unname()` or remove all names in place `names() <- N
 
 #### Factors
 
-A factor is a vector that can only have predefined values and is used to store categorical data. Factors a built on top of integer vector using two attributes
+A factor is a vector that can only have predefined values and is used to store categorical data. Factors a built on top of integer vector using two attributes:
+
 - `class()` "factor" which makes them behave differently
 - `levels()` which defines the set of allowed values
 
@@ -254,11 +269,13 @@ is.data.frame(df)
 ```
 
 It is possible to coerce an object with `as.data.frame()`. The following rules apply:
+
   - A vector will create a one column data frame
   - A list will create one column for each element; it's an error if they are not all the same length
   - A matrix will create a data frame with the same number of columns and rows as the matrix.
 
-It is possible to combine data frames with `cbind()` and `rbind()`
+It is possible to combine data frames with `cbind()` and `rbind()`:
+
   - When combining column wise (`cbind()`) the number of rows must match but row names are igniored.
   - When combining row wise (`rbind()`) both the number and names of the cloumn must match
   - Use `plyr::rbind.fill()` to combine data frames that done have the same columns

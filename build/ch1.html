@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="/static/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="/pygments.css">
+    <title>Carina Group Analytics</title>
+  </head>
+
+  <body class="d-flex flex-column h-100">
+    <div class="wrapper">
+    <header class="sticky-top modal-header">
+      <h1 class="display-1" >Carina Group Analytics</h1>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/" >Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/contact.html" >Contact</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/references.html" >Useful References</a></li>
+                </ul>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" value="" placeholder="Search" aria-label="Search">
+            <div id="result"></div>
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="container flex-shrink-0">
+    <div class="row">
+      <article class="col-10">
+        
+            <h2 class="lead">Chapter 1 from &#34;Advanced R&#34;</h2>
+            <h3 class="lead">2021-01-11</h3>
+            <h3 class="lead">James M</h3>
+            <h2>Chapter 1</h2>
+<h2>Questions</h2>
+<ol>
+<li>
+<p>What are the properties of a vector other than its contents?</p>
+<ul>
+<li>Three common properties</li>
+<li>type <code>typeof()</code>   </li>
+<li>length <code>length()</code></li>
+<li>attributes <code>attributes()</code></li>
+</ul>
+</li>
+<li>
+<p>What are the four common types of atomic vectors? What are the two rare types?</p>
+<ul>
+<li>logical <code>is.logical()</code> and <code>as.logical()</code> <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/logical">logical R Documentation</a></li>
+<li>double <code>is.double()</code> and <code>as.double</code> <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/double">double R documentation</a></li>
+<li>character <code>is.character()</code> and <code>as.character()</code> <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/character">character R documentation</a></li>
+<li>integer <code>is.integer()</code> and <code>as.integer()</code> <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/integer">integer R documentation</a></li>
+<li>complex, raw</li>
+</ul>
+</li>
+<li>
+<p>What are attributes and how to you get and set them?</p>
+<ul>
+<li>Attributes allow extra metadata to be associated with an object using <code>attr(x, "y"</code> and <code>attr(x, "y") &lt;- value</code> or get and set all attributes at once with <code>attributes()</code>.</li>
+<li><a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/attributes">attributes R documentation</a></li>
+</ul>
+</li>
+<li>
+<p>How is a list different from an atomic vector? How is a matrix different from a Data Frame?</p>
+<ul>
+<li>Elements of a list can be of any type, even a list whereas an atomic vector all the elements must be of the same type.</li>
+<li>The elements of a matrix can be different types whereas a data frame must have the same types in each of the columns.</li>
+</ul>
+</li>
+<li>
+<p>Can you have a list that is a matrix? Can a Data Frame have a column that is a matrix?</p>
+<ul>
+<li>You can make a "list-array" by assuming a dimensionless list. It is possible to make a matrix a column of a data frame <code>data.frame(x = I(matrix()))</code>.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<p>The basic Data structure in R is a vector - they come in <strong>Atomic Vectors</strong> and <strong>Lists</strong>.</p>
+<p><code>typeof()</code> ## what it is</p>
+<p><code>length()</code> ## How many elements it contains</p>
+<p><code>attributes()</code> ## additional arbitrary metadata</p>
+<h4>Atomic Vectors</h4>
+<p><a href="https://renenyffenegger.ch/notes/development/languages/R/data-structures/vector/">Vector Explaination</a></p>
+<h5>Four kinds</h5>
+<ul>
+<li>logical (true/ false)</li>
+<li>integer (numbers without decimals)</li>
+<li>double (numbers with decimals)</li>
+<li>character (strings/ words)</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="n">dbl_var</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span>
+
+<span class="n">int_var</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="mi">1</span><span class="n">L</span><span class="p">,</span> <span class="mf">2.5</span><span class="n">L</span><span class="p">,</span> <span class="mi">5</span><span class="n">L</span><span class="p">)</span> <span class="c1">## with the L suffix there is an integer rather than a double</span>
+
+<span class="n">log_var</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="n">TRUE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="n">TRUE</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">F</span><span class="p">)</span>
+
+<span class="n">chr_var</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="s2">&quot;these are some words&quot;</span><span class="p">,</span> <span class="s2">&quot;these are some other words&quot;</span><span class="p">,</span> <span class="s2">&quot;strings are &#39;words&#39;.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>Notes</li>
+<li>Atomic vectors are always flat, even if you nest <code>c()</code>'s e.g <code>c(1,c(1,3.4))</code> is the same as <code>c(1,2,3.4)</code></li>
+<li>Missing values are replaced with <code>NA</code> which is a logical vector of '1'.</li>
+</ul>
+<h5>Types and Tests</h5>
+<div class="codehilite"><pre><span></span><code><span class="nb">typeof</span><span class="p">(</span><span class="n">dbl_var</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="k">is</span><span class="o">.</span><span class="n">atomic</span><span class="p">(</span><span class="n">log_var</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="k">is</span><span class="o">.</span><span class="n">double</span><span class="p">(</span><span class="n">dbl_var</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="k">is</span><span class="o">.</span><span class="n">numeric</span><span class="p">(</span><span class="n">dbl_var</span><span class="p">)</span>
+</code></pre></div>
+
+<h5>Coercion</h5>
+<p>All elements of a vector must be of the same type.</p>
+<p>If they aren't then they will be coerced into the most flexible type.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">str(c(1,&quot;a&quot;)) ## integers and strings combine to form &#39;character&#39; vectors</span>
+</code></pre></div>
+
+<p>When a logical vector is coerced to integer or double, <code>TRUE = 1</code> and <code>FALSE = 0</code>. Often used in conjunction with <code>sum()</code> and <code>mean()</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="kc">TRUE</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">typeof</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1">## total number of &#39;TRUE&#39;s</span>
+<span class="nf">as.numeric</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1">## Proportion that are &#39;TRUE&#39;</span>
+</code></pre></div>
+
+<p>If there is any chance of confusion specifically coerce a vector to another type with:</p>
+<ul>
+<li><code>as.logical</code></li>
+<li><code>as.integer</code></li>
+<li><code>as.character</code></li>
+<li><code>as.double</code></li>
+</ul>
+<hr />
+<h4>Lists</h4>
+<p>Lists are different to vectors because the elements in them can be of any type. List can contain any variable type, vectors, matrices, functions and even lists themselves.</p>
+<p>Some useful information on lists is at this <a href="https://www.datamentor.io/r-programming/list/">link</a>.</p>
+<p>lists don't have dimensions - this means that <code>dim()</code> will return a NULL (as below).</p>
+<div class="codehilite"><pre><span></span><code><span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="kc">TRUE</span><span class="p">,</span> <span class="bp">F</span><span class="p">,</span> <span class="bp">T</span><span class="p">,</span> <span class="bp">F</span><span class="p">,</span><span class="bp">F</span><span class="p">,</span><span class="bp">T</span><span class="p">,</span><span class="bp">T</span><span class="p">),</span> <span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">))</span>
+<span class="nf">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Even though the <code>dim()</code> function doesn't work <code>nrow()</code> and <code>ncol</code> will give some details of a list.</p>
+<p>List can be called <em>recursive</em> vectors because a list can contain other lists - this is the fundamental difference between lists and vectors.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">z</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">))))</span>
+<span class="nf">str</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="nf">is.recursive</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>c()</code> will combine several lists into one. If given a combination of atomic vectors <code>c()</code> will coerce the lists to vector before combining them.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">a</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span> <span class="nf">list</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="o">:</span><span class="m">7</span><span class="p">)))</span>
+<span class="n">b</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">),</span> <span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="o">:</span><span class="m">7</span><span class="p">))</span>
+<span class="nf">str</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nf">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Notes:</p>
+<ul>
+<li><code>typeof()</code> a list is list</li>
+<li>testing for a list is <code>is.list()</code></li>
+<li>coerce to a list with <code>as.list()</code></li>
+<li>turn a list into an atomic vector with <code>unlist()</code>. The same coercion rules are used for <code>as.list()</code> as for <code>unlist()</code>.</li>
+</ul>
+<p>Both Data frames <code>as.data.frame()</code> and the outputs for a linear model objects <code>lm()</code> are built from lists.</p>
+<h3>Attributes</h3>
+<p>All objects have a arbitrary additional attributes, used to store metadata about the object.</p>
+<p>Some common attributes are in the table below:</p>
+<ul>
+<li>class     - the class of the object</li>
+<li>comment   - a comment on the object, often a description of what it means</li>
+<li>dim       - dimensions of the object</li>
+<li>dimnames  - names associated with each dimension of the object</li>
+<li>names     - names attribute of the object</li>
+<li>row.names - the name of each row of an object</li>
+<li>col.names - the name of each column of an object</li>
+<li>tsp       - the start time for an object</li>
+<li>levels    - levels of a factor</li>
+</ul>
+<p>You can get a list of all the attributes of ran object by <code>attributes()</code>.</p>
+<p>The <code>structure()</code> will return the structure of the object. Remember, attributes</p>
+<div class="codehilite"><pre><span></span><code><span class="nf">attr</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s">&quot;my_attribute&quot;</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&quot;This is a list&quot;</span> <span class="c1">## insert a comment on a list - set an attribute</span>
+
+<span class="nf">attributes</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">## inspect the attributes of the list</span>
+<span class="nf">str</span><span class="p">(</span><span class="nf">attributes</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="c1">## get the attributes for the list, only the single one for the list. Note it returns a list itself of the attributes.</span>
+
+<span class="nf">structure</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1">## returns the structure for the object</span>
+</code></pre></div>
+
+<p>By default, most attributes are lost when modifying a vector. The only attributes lost are the three most important:</p>
+<ol>
+<li>Names</li>
+<li>Dimensions</li>
+<li>Class</li>
+</ol>
+<h4>Names</h4>
+<p>You can name a vector in three ways:</p>
+<ul>
+<li>When creating it</li>
+<li>By modifying an existing vector in place</li>
+<li>By creating a modified copy of an existing vector</li>
+</ul>
+<p>Names should be unique to facilitate character sub-setting.</p>
+<p>You can unname a vector by <code>unname()</code> or remove all names in place <code>names() &lt;- NULL</code></p>
+<h4>Factors</h4>
+<p>A factor is a vector that can only have predefined values and is used to store categorical data. Factors a built on top of integer vector using two attributes:</p>
+<ul>
+<li><code>class()</code> "factor" which makes them behave differently</li>
+<li><code>levels()</code> which defines the set of allowed values</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="n">l</span> <span class="o">&lt;-</span> <span class="nf">factor</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">))</span>
+<span class="n">l</span>
+<span class="nf">class</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="nf">levels</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Using a factor instead of a character vector makes it obvious when some groups contain no observations.</p>
+<p>Most data loading automatically turns characters to factors, this is suboptimal. To stop this behavior use <code>stringsAsFactors = FALSE</code> then manually convert the characters to factors with your knowledge of the data. Factor look like characters but they are actually integers. It's better to explicitly change characters to factors and factors to characters.</p>
+<h3>Matrices and Arrays</h3>
+<p>Adding a <code>dim()</code> attribute to a vector allows it to perform like a multi-dimensional <em>array</em>. A special case of an array is a <strong>Matrix</strong>, it has two dimensions. Matrices are used for statistics, arrays are rarer.   </p>
+<div class="codehilite"><pre><span></span><code><span class="n">e</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="n">ncol</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span> <span class="c1">## two scalar arguments to specify rows and columns</span>
+<span class="n">e</span>
+<span class="n">f</span> <span class="o">&lt;-</span> <span class="nf">array</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">))</span> <span class="c1">## one argument to describe all dimensions</span>
+<span class="n">f</span>
+<span class="n">g</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="m">6</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">)</span> <span class="c1">## modify an object in place</span>
+<span class="n">g</span>
+</code></pre></div>
+
+<p><code>length()</code> generalises to <code>nrow()</code> and <code>ncol()</code> for matrices, and <code>dim()</code> for arrays.</p>
+<p><code>names()</code> generalises to <code>rownames()</code> and <code>colnames()</code> for matrices, and <code>dimnames()</code>, a list of character vectors for arrays.</p>
+<p><code>c()</code> generalises to <code>cbind()</code> and <code>rbind()</code> for matrices and <code>abind()</code> for arrays.</p>
+<p>To test or a matrix using <code>is.matrix()</code> and an array using <code>is.array()</code> or by looking at the length of the <code>dim()</code>. <code>as.martix()</code> and <code>as.array()</code> make it easy to trun vectors into either a matirx or an array.</p>
+<p>Vectors are the only one dimensional data structure. Atomic vectors are most commonly turned into matrices, the dimension attribute can be set on a list to make list-matrices and list-arrays.</p>
+<h3>Data Frames</h3>
+<p>A data frame is the most common way of storing data in R. Tidy data is the basis for making data analysis easier. A data frame is a list of equal length vectors, this makes it a two dimension data strcture. It shares the properties of both a matrix and the list.</p>
+<p>A data frame has <code>names()</code>, <code>rownames()</code> and <code>colnames()</code>, names and colnames are the same thing. The length of a dataframe is the length of the underliying list so it is the same as <code>nccol()</code>; <code>nrow()</code> gives the number of rows.</p>
+<h4>Creation of Data Frames</h4>
+<p>You can create a data frame with <code>data.frame()</code>, which takes named vectors a input.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">))</span>
+<span class="n">df</span>
+<span class="nf">str</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Data frame is an S3 class, its type reflects the underlying vector used to build it: the list. To test if something is a data frame use <code>class()</code> or test explicitly with <code>is.data.frame()</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">typeof(df)</span>
+<span class="err">class(df)</span>
+<span class="err">is.data.frame(df)</span>
+</code></pre></div>
+
+<p>It is possible to coerce an object with <code>as.data.frame()</code>. The following rules apply:</p>
+<ul>
+<li>A vector will create a one column data frame</li>
+<li>A list will create one column for each element; it's an error if they are not all the same length</li>
+<li>A matrix will create a data frame with the same number of columns and rows as the matrix.</li>
+</ul>
+<p>It is possible to combine data frames with <code>cbind()</code> and <code>rbind()</code>:</p>
+<ul>
+<li>When combining column wise (<code>cbind()</code>) the number of rows must match but row names are igniored.</li>
+<li>When combining row wise (<code>rbind()</code>) both the number and names of the cloumn must match</li>
+<li>Use <code>plyr::rbind.fill()</code> to combine data frames that done have the same columns</li>
+<li>If you try to create a data frame by <code>cbind()</code>ing vectors together a matrix is created - use <code>data.frame()</code> instead. -- the extension is to make sure that when using <code>cbind()</code> all the columns types are the same.</li>
+</ul>
+        
+      </article>
+      <aside class="col-2 position-sticky">Articles
+        <li class="list-unstyled">
+          <a class="nav-link" href="/ch1.html" active>Advanced R - CH 1</a>
+          <a class="nav-link" href="/Template.html" >Markdown Template</a>
+        </li>
+      </aside>
+    </div>
+  </main>
+  <footer class="footer py-3">
+    <div class="modal-footer sticky-footer">
+    <p> Copyright 2021 </p>
+  </div>
+  </footer>
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    -->
+  </div>
+  </body>
+</html>

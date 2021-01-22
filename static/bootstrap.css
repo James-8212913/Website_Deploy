@@ -44,6 +44,12 @@
   }
 }
 
+.wrapper {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
 body {
   margin: 0;
   font-family: var(--bs-font-sans-serif);
@@ -81,9 +87,10 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 
 h1, .h1 {
   font-size: calc(1.375rem + 1.5vw);
-  color: blue;
+  color: black;
   text-align: center;
 }
+
 @media (min-width: 1200px) {
   h1, .h1 {
     font-size: 2.5rem;
@@ -464,6 +471,7 @@ progress {
   font-size: calc(1.625rem + 4.5vw);
   font-weight: 300;
   line-height: 1.2;
+  color: black;
 }
 @media (min-width: 1200px) {
   .display-1 {
@@ -5192,11 +5200,15 @@ textarea.form-control-lg {
   opacity: 0.5;
 }
 
+header {
+  background-color: white;
+}
+
 .modal-header {
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 1rem 1rem;
   border-bottom: 1px solid #dee2e6;
   border-top-left-radius: calc(0.3rem - 1px);

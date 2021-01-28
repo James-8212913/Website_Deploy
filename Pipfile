@@ -8,6 +8,8 @@ flask = "*"
 frozen-flask = "*"
 flask-flatpages = "*"
 bootstrap-flask = "*"
+flask-flatpages-pandoc = "*"
+pygments = "*"
 
 [dev-packages]
 

@@ -4,12 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
-frozen-flask = "*"
-flask-flatpages = "*"
-bootstrap-flask = "*"
-flask-flatpages-pandoc = "*"
+markdown = "*"
 pygments = "*"
+flask = "*"
+flask-flatpages = "*"
+flask-bootstrap = "*"
+frozen-flask = "*"
 
 [dev-packages]
 

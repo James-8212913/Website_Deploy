@@ -5,13 +5,13 @@ name = "pypi"
 
 [packages]
 markdown = "*"
-pygments = "*"
 flask = "*"
+frozen-flask = "*"
 flask-flatpages = "*"
 flask-bootstrap = "*"
-frozen-flask = "*"
+pygments = "*"
 
 [dev-packages]
 
 [requires]
-
+python_version = "3.7"

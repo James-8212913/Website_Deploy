@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="/static/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('pygments_css') }}">
+    <link rel="stylesheet" href="pygments.css">
     <title>Carina Group Analytics</title>
   </head>
 
@@ -23,14 +23,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/" {% if page.path == "index" %}active{% endif %}>Home</a>
+              <a class="nav-link active" aria-current="page" href="/" >Home</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{{ url_for('page', path='contact') }}" {% if page.path == "contact" %}active{% endif %}>Contact</a></li>
+                  <li><a class="dropdown-item" href="contact.html" >Contact</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="{{ url_for('page', path='references') }}" {% if page.path == "references" %}active{% endif %}>Useful References</a></li>
+                  <li><a class="dropdown-item" href="references.html" >Useful References</a></li>
                 </ul>
             </li>
           </ul>
@@ -46,17 +46,95 @@
   <main class="container flex-shrink-0">
     <div class="row">
       <article class="col-10">
-        {% block main %}
-            <h2 class="lead">{{ page.meta.description }}</h2>
-            <h3 class="lead">{{ page.meta.published }}</h3>
-            <h3 class="lead">{{ page.meta.authour }}</h3>
-            {{ page.html|safe }}
-        {% endblock main %}
+        
+            <h2 class="lead">Use this as a reference to see how things will render</h2>
+            <h3 class="lead">2021-01-12</h3>
+            <h3 class="lead"></h3>
+            <h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h3>Tables</h3>
+<table>
+<thead>
+<tr>
+<th>Syntax</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Header</td>
+<td>Title</td>
+</tr>
+<tr>
+<td>Paragraph</td>
+<td>Text</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Syntax</th>
+<th align="center">Description</th>
+<th align="right">Test Text</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Header</td>
+<td align="center">Title</td>
+<td align="right">Here's this</td>
+</tr>
+<tr>
+<td align="left">Paragraph</td>
+<td align="center">Text</td>
+<td align="right">And more</td>
+</tr>
+</tbody>
+</table>
+<h3>Horizontal Rules</h3>
+<hr />
+<hr />
+<hr />
+<p>My favorite search engine is <a href="https://duckduckgo.com">Duck Duck Go</a>.</p>
+<h3>Code Highlighting</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;lastName&quot;</span><span class="p">:</span> <span class="s2">&quot;Smith&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;age&quot;</span><span class="p">:</span> <span class="mi">25</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3>Footnotes - Issue to be corrected or avoided</h3>
+<p>Here's a simple footnote,[^1] and here's a longer one.[^bignote]</p>
+<p>[^1]: This is the first footnote.</p>
+<p>[^bignote]: Here's one with multiple paragraphs and code.
+  Indent paragraphs to include them in the footnote. <code>{ my code }</code>
+  Add as many paragraphs as you like.</p>
+<h3>My Great Heading</h3>
+<h3><a href="#title">Link to the heading above</a></h3>
+<h3>Definition Lists - Issue to be corrected or avoided</h3>
+<p>First Term
+: This is the definition of the first term.</p>
+<p>Second Term
+: This is one definition of the second term.
+: This is another definition of the second term.</p>
+<h3>Strikethrough - Issue to be corrected or avoided</h3>
+<p>~~The world is flat.~~ We now know that the world is round.</p>
+<h3>Task lists</h3>
+<ul>
+<li>[x] Write the press release</li>
+<li>[ ] Update the website</li>
+<li>[ ] Contact the media</li>
+</ul>
+<p>http://www.example.com</p>
+        
       </article>
       <aside class="col-2 position-sticky">Articles
         <li class="list-unstyled">
-          <a class="nav-link" href="{{ url_for('page', path='CH_1') }}" {% if page.path == "CH_1" %}active{% endif %}>Advanced R - CH 1</a>
-          <a class="nav-link" href="{{ url_for('page', path='Template') }}" {% if page.path == "Template" %}active{% endif %}>Markdown Template</a>
+          <a class="nav-link" href="CH_1.html" >Advanced R - CH 1</a>
+          <a class="nav-link" href="Template.html" active>Markdown Template</a>
         </li>
       </aside>
     </div>

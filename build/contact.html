@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="/static/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('pygments_css') }}">
+    <link rel="stylesheet" href="pygments.css">
     <title>Carina Group Analytics</title>
   </head>
 
@@ -23,14 +23,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/" {% if page.path == "index" %}active{% endif %}>Home</a>
+              <a class="nav-link active" aria-current="page" href="/" >Home</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{{ url_for('page', path='contact') }}" {% if page.path == "contact" %}active{% endif %}>Contact</a></li>
+                  <li><a class="dropdown-item" href="contact.html" active>Contact</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="{{ url_for('page', path='references') }}" {% if page.path == "references" %}active{% endif %}>Useful References</a></li>
+                  <li><a class="dropdown-item" href="references.html" >Useful References</a></li>
                 </ul>
             </li>
           </ul>
@@ -46,17 +46,17 @@
   <main class="container flex-shrink-0">
     <div class="row">
       <article class="col-10">
-        {% block main %}
-            <h2 class="lead">{{ page.meta.description }}</h2>
-            <h3 class="lead">{{ page.meta.published }}</h3>
-            <h3 class="lead">{{ page.meta.authour }}</h3>
-            {{ page.html|safe }}
-        {% endblock main %}
+        
+            <h2 class="lead"></h2>
+            <h3 class="lead"></h3>
+            <h3 class="lead"></h3>
+            <p>This is a list of who is on the team from the .md file</p>
+        
       </article>
       <aside class="col-2 position-sticky">Articles
         <li class="list-unstyled">
-          <a class="nav-link" href="{{ url_for('page', path='CH_1') }}" {% if page.path == "CH_1" %}active{% endif %}>Advanced R - CH 1</a>
-          <a class="nav-link" href="{{ url_for('page', path='Template') }}" {% if page.path == "Template" %}active{% endif %}>Markdown Template</a>
+          <a class="nav-link" href="CH_1.html" >Advanced R - CH 1</a>
+          <a class="nav-link" href="Template.html" >Markdown Template</a>
         </li>
       </aside>
     </div>

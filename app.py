@@ -42,7 +42,7 @@ pages = FlatPages(app)
 @app.route("/<path:path>.html")
 def page(path=None):
     # Look for the flatpages or find "index" if we have one loaded
-    page = pages(path or 'index')
+    page = pages.get_or_404(path)
      # Render the template "page.html" with our page and title
     return render_template("base.html", page=page, title=page.meta.get('title',''))
 

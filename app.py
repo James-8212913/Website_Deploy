@@ -19,6 +19,7 @@ def my_markdown(text):
 
 # create the opject, use this for our setting as well
 app = Flask(__name__)
+app.config['TESTING'] = True
 bootstrap = Bootstrap(app)
 
 # For settings the file itself is used

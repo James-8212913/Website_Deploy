@@ -35,13 +35,10 @@ My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
 
 ### Code Highlighting
 
-```json
-{
-  "firstName": "John",
-  "lastName": "Smith",
-  "age": 25
-}
-```
+:::python
+"firstName": "John",
+"lastName": "Smith",
+"age": 25
 
 
 ### Footnotes - Issue to be corrected or avoided

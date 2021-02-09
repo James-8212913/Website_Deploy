@@ -2,7 +2,7 @@ from flask_frozen import Freezer
 from app import app
 
 app.config['FREEZER_RELATIVE_URLS'] = True
-FREEZER_IGNORE_404_NOT_FOUND=True
+app.config['FREEZER_IGNORE_404_NOT_FOUND']=True
 
 freezer = Freezer(app)
 

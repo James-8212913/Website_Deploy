@@ -41,14 +41,17 @@ pages = FlatPages(app)
 ## Route to Flatpages and our root directory in addition to any path that ends in ".html"
 @app.route('/')
 def index():
-    return render_template("index.html", page=page)
+    return 'Hello World'
 
-@app.route("/<path:path>.html")
-def page(path=None):
+    ##page = pages.get_or_404(path)
+    ##return render_template("base.html", page=page, title=page.meta.get('title',''))
+
+##@app.route("/<path:path>/")
+##def page(path):
     # Look for the flatpages or find "index" if we have one loaded
-    page = pages.get_or_404(path or 'index')
+##    page = pages.get_or_404(path)
      # Render the template "page.html" with our page and title
-    return render_template("base.html", page=page, title=page.meta.get('title',''))
+##    return render_template("base.html", page=page, title=page.meta.get('title',''))
 
 @app.route('/pygments.css')
 def pygments_css():

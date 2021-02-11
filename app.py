@@ -41,7 +41,7 @@ pages = FlatPages(app)
 ## Route to Flatpages and our root directory in addition to any path that ends in ".html"
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("index.html", page=page)
 
 @app.route("/<path:path>.html")
 def page(path=None):

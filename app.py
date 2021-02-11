@@ -10,6 +10,15 @@ from pygments import highlight
 # Tell Flatpages to auto reload when changes are made and look for .md files
 FLATPAGES_AUTO_RELOAD = True
 FLATPAGES_EXTENSION = '.md'
+##FLATPAGES_EXTENSION_CONFIGS = {
+##    'codehilite': {'linenums' : 'True'},
+##    'extra': {'footnotes': {'UNIQUE_IDS': True},
+##            'fenced_code': {'lang_prefix': 'lang-'}},
+##    'toc': {'permalink': True}
+##    }
+
+
+## html = markdown.markdown(text=['.md'], extensions=['extra', 'toc'], extension_configs=config)
 
 # Tell markdown to include the pygment extensions using codehilite, fenced code and tables
 def my_markdown(text):
@@ -38,10 +47,12 @@ app.url_map.strict_slashes = False
 #Create an instance of our extension
 pages = FlatPages(app)
 
+
+
 ## Route to Flatpages and our root directory in addition to any path that ends in ".html"
 @app.route('/')
 def index():
-    return 'Hello World'
+    return render_template('testing.html')
 
     ##page = pages.get_or_404(path)
     ##return render_template("base.html", page=page, title=page.meta.get('title',''))

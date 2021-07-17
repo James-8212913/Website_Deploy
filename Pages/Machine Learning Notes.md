@@ -1,3 +1,0 @@
-ML is ultimately seeking patterns in Data. We have been seeking patterns in things since the beginning of time. Making sense of the patterns and identifying changes in what is considered normal is essential to daily life.
-
-ML is when we compare the performance of something by observing behaviour and comparing it will past behaviours. This is where the refining of models and outputs from the models is the essential aspect. Compare this with training. Training is a form of optimisation on a known activity and outcome - we train animals to do things and plant to grow a certain way. These things take time and the speed with which the 'training' can be achieved is considered the differentiator. Learning implies a level of thinking and purpose.

@@ -4,21 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-certifi = "==2021.5.30"
-charset-normalizer = "==2.0.3"
-click = "==8.0.1"
-idna = "==3.2"
-itsdangerous = "==2.0.1"
-urllib3 = "==1.26.6"
-Flask = "==2.0.1"
-Frozen-Flask = "==0.18"
-Jinja2 = "==3.0.1"
-MarkupSafe = "==2.0.1"
-Werkzeug = "==2.0.1"
+flask = "*"
+frozen-flask = "*"
 flask-bootstrap = "*"
-datetime = "*"
-flask-moment = "*"
-pip = "*"
 
 [dev-packages]
 

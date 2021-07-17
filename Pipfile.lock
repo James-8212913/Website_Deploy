@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "de03f3c794bd6c19814a65e7ac49a5ab54481e2bfa54aafb1e0a6d2be00c0f32"
+            "sha256": "57d8d53e1b6fb80de682699037bc55c4e0ad847da8f30869b16fe638db024fca"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.8"
+            "python_version": "3.7"
         },
         "sources": [
             {
@@ -54,6 +54,14 @@
             ],
             "index": "pypi",
             "version": "==0.18"
+        },
+        "importlib-metadata": {
+            "hashes": [
+                "sha256:079ada16b7fc30dfbb5d13399a5113110dab1aa7c2bc62f66af75f0b717c8cac",
+                "sha256:9f55f560e116f8643ecf2922d9cd3e1c7e8d52e683178fecd9d08f6aa357e11e"
+            ],
+            "markers": "python_version < '3.8'",
+            "version": "==4.6.1"
         },
         "itsdangerous": {
             "hashes": [
@@ -111,6 +119,15 @@
             "markers": "python_version >= '3.6'",
             "version": "==2.0.1"
         },
+        "typing-extensions": {
+            "hashes": [
+                "sha256:0ac0f89795dd19de6b97debb0c6af1c70987fd80a2d62d1958f7e56fcc31b497",
+                "sha256:50b6f157849174217d0656f99dc82fe932884fb250826c18350e159ec6cdf342",
+                "sha256:779383f6086d90c99ae41cf0ff39aac8a7937a9283ce0a414e5dd782f4c94a84"
+            ],
+            "markers": "python_version < '3.8'",
+            "version": "==3.10.0.0"
+        },
         "visitor": {
             "hashes": [
                 "sha256:2c737903b2b6864ebc6167eef7cf3b997126f1aa94bdf590f90f1436d23e480a"
@@ -124,6 +141,14 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==2.0.1"
+        },
+        "zipp": {
+            "hashes": [
+                "sha256:957cfda87797e389580cb8b9e3870841ca991e2125350677b2ca83a0e99390a3",
+                "sha256:f5812b1e007e48cff63449a5e9f4e7ebea716b4111f9c4f9a645f91d579bf0c4"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==3.5.0"
         }
     },
     "develop": {}

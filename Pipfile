@@ -4,14 +4,22 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-markdown = "*"
-flask = "*"
-frozen-flask = "*"
-flask-flatpages = "*"
+certifi = "==2021.5.30"
+charset-normalizer = "==2.0.3"
+click = "==8.0.1"
+idna = "==3.2"
+itsdangerous = "==2.0.1"
+urllib3 = "==1.26.6"
+Flask = "==2.0.1"
+Frozen-Flask = "==0.18"
+Jinja2 = "==3.0.1"
+MarkupSafe = "==2.0.1"
+Werkzeug = "==2.0.1"
 flask-bootstrap = "*"
-pygments = "*"
+datetime = "*"
+flask-moment = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
